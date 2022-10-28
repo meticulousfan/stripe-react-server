@@ -268,7 +268,12 @@ export default function CreditCardForm(props) {
       </Modal>
 
       {/* Bet amount field */}
-      <img src={products.url} width="100px" height="100px"></img>
+      <img
+        src={products.url}
+        width="100px"
+        height="100px"
+        alt="medusa-img"
+      ></img>
       <span style={{ marginLeft: "10px" }}>Price: {products.price}$</span>
       <span style={{ marginLeft: "10px" }}>Total price: {price}$</span>
       <Field
