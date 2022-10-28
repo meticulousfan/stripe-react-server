@@ -4,7 +4,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { Form, Modal, Button } from "react-bootstrap";
 import Field from "./Field";
 //css provided by stripe to format elements
-
+const url = " https://cfea-45-126-3-252.jp.ngrok.io";
 const axios = require("axios");
 const products = {
   id: "img_01GG9SZMHJHXT5JWPG3MXYJ98J",
@@ -151,7 +151,7 @@ export default function CreditCardForm(props) {
     //STEP 2:
     //create a new payment request and get irs client secret + id from the server
     const intentData = await axios
-      .post("https://2296-45-126-3-252.jp.ngrok.io/stripe", {
+      .post(`${url}/stripe`, {
         //include the bet amount
         price: price,
       })
@@ -189,7 +189,7 @@ export default function CreditCardForm(props) {
     // The payment has been processed! send a confirmation to the server
     if (result.paymentIntent.status === "succeeded") {
       const confirmedPayment = await axios
-        .post("https://2296-45-126-3-252.jp.ngrok.io/confirm-payment", {
+        .post(`${url}/confirm-payment`, {
           //include id of payment
           payment_id: intentData.id,
           payment_type: "stripe",
